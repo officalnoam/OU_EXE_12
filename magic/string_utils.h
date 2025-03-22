@@ -2,6 +2,7 @@
   #include "boolean.h"
   
   #define STRING_UTILS
+  #define LAST_ITEM -1
   
   bool is_char_whitespace(char c);
   bool is_char_numeric(char c);

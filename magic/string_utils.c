@@ -84,6 +84,6 @@ int* parse_ints_from_string(char* str)
     else
       i++;
   }
-  parsed_ints[list_index] = -1;
+  parsed_ints[list_index] = LAST_ITEM;
   return parsed_ints;
 }
