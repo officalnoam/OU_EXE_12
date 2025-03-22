@@ -4,6 +4,14 @@
 #include <stdio.h>
 #include <errno.h>
 
+/*
+This function checks if a char is a whitespace- including a tab or newline.
+
+Input-
+  char c: The char being checked.
+Output-
+  bool: true if c is a whitespace, otherwise false.
+*/
 bool is_char_whitespace(char c)
 {
   if (c == ' ' || c == '\n' || c == '\t')
@@ -11,6 +19,14 @@ bool is_char_whitespace(char c)
   return false;
 }
 
+/*
+This function checks if a char is a number.
+
+Input-
+  char c: The char being checked.
+Output-
+  bool: true if c is a number, false otherwise.
+*/
 bool is_char_numeric(char c)
 {
   if (c >= '0' && c <= '9')
@@ -18,12 +34,21 @@ bool is_char_numeric(char c)
   return false;
 }
 
+/*
+This function will receive a string, and parse from it all numbers seperated by whitespaces- and reeturn a list of those numbers in order.
+
+Input-
+  char* str: The string being parsed
+
+Output-
+  int*: The list of integers within the string.
+*/
 int* parse_ints_from_string(char* str)
 {
   int i = 0;
   int list_index = 0;
   int temp;
-  int* parsed_ints = (int*)malloc((MATRIX_SIZE * MATRIX_SIZE + 1) * sizeof(int));
+  int* parsed_ints = (int*) malloc((MATRIX_SIZE * MATRIX_SIZE + 1) * sizeof(int));
   
   while (str[i] != '\0')
   {
