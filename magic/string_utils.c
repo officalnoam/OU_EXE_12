@@ -34,6 +34,23 @@ bool is_char_numeric(char c)
   return false;
 }
 
+int parse_int_from_substring(char* str, int* index_p)
+{
+  int num = 0;
+  while (!is_char_whitespace(str[*index_p]))
+  {
+    if (!is_char_numeric(str[*index_p]))
+    {
+      errno = EINVAL;
+      perror("Inputted non whitespace or numeric character.");
+    }
+    num = num * 10;
+    num = num + str[*index_p] - '0';
+    *index_p = *index_p + 1;
+  }
+  return num;
+}
+
 /*
 This function will receive a string, and parse from it all numbers seperated by whitespaces- and reeturn a list of those numbers in order.
 
@@ -60,18 +77,7 @@ int* parse_ints_from_string(char* str)
         errno = EINVAL;
         perror("Inputted number amount larger than the amount of numbers in the matrix");
       }
-
-      while (!is_char_whitespace(str[i]))
-      {
-        if (!is_char_numeric(str[i]))
-        {
-          errno = EINVAL;
-          perror("Inputted non whitespace or numeric char");
-        }
-        temp = temp * 10;
-        temp = temp + (str[i] - '0');
-        i++;
-      }
+      temp = parse_int_from_substring(str, &i);
       parsed_ints[list_index] = temp;
       list_index++;
     }
