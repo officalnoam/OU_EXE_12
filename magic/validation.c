@@ -6,11 +6,7 @@
 #include <stdlib.h>
 
 /*
-This function will validate that the amount of numbers inputted by the user is the needed amount- the MATRIX_SIZE squared.
-Will raise an error if the number doesn't match.
-
-Input-
-  int* arr: The inputted numbers.
+This function will raise an error if the size of the array isn't the required size- the MATRIX_SIZE squared.
 */
 void validate_length(int* arr)
 {
@@ -23,14 +19,9 @@ void validate_length(int* arr)
 }
 
 /*
-This function will validate the uniqueness of all of the numbers inputted by the user.
-This is done by first sorting a copy of the inputted numbers, are comparing the surrounding numbers
-(to avoid higher time complexities if all numbers are compared to all other numbers).
-
-Input-
-  int* arr: The inputted numbers by the user.
-Output-
-  bool: true if all numbers are unique, false otherwise.
+This function validates the unjiqueness of all items in the array.
+This is done by creating a sorted copy of the array (with the time complexity O(nlogn))
+and then all items in the sorted array are compared to the item before and after it.
 */
 bool validate_uniqueness(int* arr)
 {
@@ -45,12 +36,7 @@ bool validate_uniqueness(int* arr)
 } 
 
 /*
-This function will validate that all numbers inputted by the user are between 1 and the size of the matrix squared.
-
-Input-
-  int* arr: The inputted numbers.
-Output-
-  bool: true if all numbers are within the described range, false otherwise.
+This function will validate that all items in the array are within the valid sizes of 1-MATRIX_SIZE squared.
 */
 bool validate_num_range(int* arr)
 {
@@ -64,13 +50,8 @@ bool validate_num_range(int* arr)
 }
 
 /*
-This function will perform validations on the inputted numbers by the user.
-If according to the exercise they should cause the program to stop running- an error will be raised.
-
-Input-
-  int* arr: The numbers inputted by the user.
-Output-
-  bool: true if the input is valid, false otherwise.
+This function validates the ability of an inputted array to be a magic square,
+orior to comparing the sums of the rows, columns and diagonals.
 */
 bool validate_input(int* arr)
 {

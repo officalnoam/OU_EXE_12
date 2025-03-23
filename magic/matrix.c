@@ -4,16 +4,15 @@
 #include <stdlib.h>
 
 /*
-This function will completely free the memory of the matrix.
-
-Input-
-  int** matrix: The matrix being freed.
+This function will completely free all pointers in the matrix.
+It will first free all of the rows that aren't null and will then free the pointer to the matrix itself.
 */
 void free_matrix(int** matrix)
 {
   int i;
   for (i = 0; i < MATRIX_SIZE; i++)
   {
+    /*If the row is initialized- free it.*/
     if (matrix[i] != NULL)
       free(matrix[i]);
   }
@@ -21,12 +20,10 @@ void free_matrix(int** matrix)
 }
 
 /*
-This function will create a matrix.
-
-Input-
-  int* arr: The values that will be assigned to the matrix.
-Output-
-  int** matrix: The created matrix.
+Create a matrix based on a passed array of integers.
+Will first create an array to an array of integers- and will then create all of those arrays of integers.
+After the creation, it will iterate over all rows, and all items within the row and assign to them the correct
+integer from arr.
 */
 int** create_matrix(int* arr)
 {
@@ -37,6 +34,8 @@ int** create_matrix(int* arr)
   if (matrix == NULL)
     return NULL;
 
+  /*Set all pointers within the matrix to NULL, so that if there is a need to free the matrix
+  after memory allocation failed, only previously initialized rows will be freed*/
   for (i = 0; i < MATRIX_SIZE; i++)
     matrix[i] = NULL;
   
@@ -60,10 +59,8 @@ int** create_matrix(int* arr)
 }
 
 /*
-This function prints a passed matrix.
-
-Input-
-  int** matrix: The matrix.
+This function goes over each row in the matrix- and prints its items,
+so that the entire matrix is printed.
 */
 void print_matrix(int** matrix)
 {
@@ -79,13 +76,7 @@ void print_matrix(int** matrix)
 }
 
 /*
-Check if the sums of all rows of the matrix are equal to the sum.
-
-Input-
-  int** matrix: The matrix
-  int sum: The sum the rows are being compared to.
-Output-
-  bool: true if all of the sums of the rows are equal to sum, false otherwise.
+Will go over each row and sum the items within. If the sum isn't equal to sum, return false.
 */
 bool check_rows(int** matrix, int sum)
 {
@@ -106,12 +97,7 @@ bool check_rows(int** matrix, int sum)
 }
 
 /*
-Check if the sums of all columns of the matrix are equal to the sum.
-Input-
-  int** matrix: The matrix.
-  int sum: The sum the columns are being compared to.
-Output-
-  bool: true if all of the sums of the columns are equal to sum, false otherwise.
+Will go over each column and sum the items within. If the sum isn't equal to sum, return false.
 */
 bool check_columns(int** matrix, int sum)
 {
@@ -132,12 +118,7 @@ bool check_columns(int** matrix, int sum)
 }
 
 /*
-Check if the sums of all both diagonals of the matrix are equal to the sum.
-Input-
-  int** matrix: The matrix.
-  int sum: The sum the columns are being compared to.
-Output-
-  bool: true if both of the sums of the diagonals are equal to sum, false otherwise.
+Will go over each diagonals and sum the items within. If the sum isn't equal to sum, return false.
 */
 bool check_diagonals(int** matrix, int sum)
 {
@@ -157,12 +138,8 @@ bool check_diagonals(int** matrix, int sum)
 }
 
 /*
-This function will check if a passed matrix is a magic square.
-
-Input-
-  int** matrix: The matrix.
-Output-
-  bool: true if the matrix is a magic square, false otherwise.
+Check the sum of the first row in the matrix.
+If any row, column or diagonal has a different sum- return false.
 */
 bool is_magic(int** matrix)
 {

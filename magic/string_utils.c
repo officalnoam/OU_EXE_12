@@ -5,12 +5,7 @@
 #include <errno.h>
 
 /*
-This function checks if a char is a whitespace- including a tab or newline.
-
-Input-
-  char c: The char being checked.
-Output-
-  bool: true if c is a whitespace, otherwise false.
+Checks if a character is a whitespace.
 */
 bool is_char_whitespace(char c)
 {
@@ -20,12 +15,7 @@ bool is_char_whitespace(char c)
 }
 
 /*
-This function checks if a char is a number.
-
-Input-
-  char c: The char being checked.
-Output-
-  bool: true if c is a number, false otherwise.
+Checks if a character is a number.
 */
 bool is_char_numeric(char c)
 {
@@ -34,6 +24,10 @@ bool is_char_numeric(char c)
   return false;
 }
 
+/*
+This function parses an integer starting from the index of the passed pointer,
+and continues until the next whitespace.
+*/
 int parse_int_from_substring(char* str, int* index_p)
 {
   int num = 0;
@@ -53,13 +47,8 @@ int parse_int_from_substring(char* str, int* index_p)
 }
 
 /*
-This function will receive a string, and parse from it all numbers seperated by whitespaces- and reeturn a list of those numbers in order.
-
-Input-
-  char* str: The string being parsed
-
-Output-
-  int*: The list of integers within the string.
+This function parses all of the integers from the passed string,
+and returns a list of those integers in the order they are in the passed string.
 */
 int* parse_ints_from_string(char* str)
 {

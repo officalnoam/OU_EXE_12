@@ -7,13 +7,8 @@
 #include <stdio.h>
 
 /*
-This function serves as a teardown for all the manually allocated memory throughout the program.
-If a pointer is not NULL, will free the memory.
-
-Input-
-  char* str: The string inputted by the user during the program.
-  int* nums: The list of integers within the string.
-  int** matrix: The created matrix.
+This function will free all the pointers used in the main function to avoid duplicate code.
+Will check which of the pointers are null- and will free any that isn't.
 */
 void free_pointers(char* str, int* nums, int** matrix)
 {
@@ -24,7 +19,7 @@ void free_pointers(char* str, int* nums, int** matrix)
     free(nums);
 
   if (matrix != NULL)
-    free(matrix);
+    free_matrix(matrix);
 }
 
 int main()

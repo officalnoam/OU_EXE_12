@@ -5,12 +5,8 @@
 #include <string.h>
 
 /*
-This function will get a string from the user. Validations of the string will not be performed. There isn't an upper limit on the size of the
-string that can be received, except for the need for memory that can store it.
-The string input will stop after EOF is inputted).
-
-Output-
-  char*: the string that the user inputted. 
+This function gets the input string from the user. The size of the string isn't limited-
+if the max size of the string is reached- realloc will be used to increase the max size.
 */
 char* get_string_from_user() {
   char c;
@@ -29,6 +25,7 @@ char* get_string_from_user() {
          MATRIX_SIZE * MATRIX_SIZE);
   while ((c=getchar()) != EOF)
   {
+    /*If the size of the string has reached capacity- increase the size of the string using realloc*/
     if (size == capacity - 1)
     {
       capacity = capacity + BUFFER_SIZE * sizeof(char);
