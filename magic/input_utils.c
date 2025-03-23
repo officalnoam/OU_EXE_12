@@ -24,7 +24,7 @@ char* get_string_from_user() {
     printf("Memory allocation failed");
     return NULL;
   }
-  printf("Please input the numbers in the matrix being checked.\n There needs to be %d numbers inputted, seperated by one or more whitespaces:\n", \
+  printf("Please input the numbers in the matrix being checked. \nThere needs to be %d numbers inputted, seperated by one or more whitespaces:\n", \
          MATRIX_SIZE * MATRIX_SIZE);
   while ((c=getchar()) != EOF)
   {
