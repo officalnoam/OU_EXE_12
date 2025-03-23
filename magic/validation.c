@@ -1,8 +1,9 @@
 #include "validation.h"
 #include "sort_utils.h"
-#include "input_utils.h"
+#include "magic.h"
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
 This function will validate that the amount of numbers inputted by the user is the needed amount- the MATRIX_SIZE squared.
@@ -16,7 +17,8 @@ void validate_length(int* arr)
   if (get_arr_length(arr) != MATRIX_SIZE * MATRIX_SIZE)
   {
     errno = EINVAL;
-    perror("The amount of numbers inputted is incorrect"); 
+    perror("The amount of numbers inputted is incorrect");
+    exit(1); 
   }
 }
 

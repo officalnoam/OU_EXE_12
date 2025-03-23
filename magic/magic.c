@@ -46,7 +46,7 @@ int main()
   
   if (!validate_input(nums))
   {
-    printf("Is not a magic square due to inputted nums being out of range/not being unqiue");
+    printf("Is not a magic square due to inputted nums being out of range/not being unqiue.\n");
     free_pointers(str, nums, matrix);
     return 1;
   }
@@ -65,5 +65,5 @@ int main()
     printf("The inputted numbers do not form a magic square.\n");
 
   free_pointers(str, nums, matrix);
-  return 1;
+  return 0;
 }

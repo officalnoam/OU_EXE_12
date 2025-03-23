@@ -1,5 +1,5 @@
 #include "matrix.h"
-#include "input_utils.h"
+#include "magic.h"
 #include <stdio.h>
 #include <stdlib.h>
 

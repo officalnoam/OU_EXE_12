@@ -1,4 +1,5 @@
 #include "input_utils.h"
+#include "magic.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

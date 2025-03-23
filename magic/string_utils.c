@@ -1,5 +1,5 @@
 #include "string_utils.h"
-#include "input_utils.h"
+#include "magic.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
@@ -43,6 +43,7 @@ int parse_int_from_substring(char* str, int* index_p)
     {
       errno = EINVAL;
       perror("Inputted non whitespace or numeric character.");
+      exit(1);
     }
     num = num * 10;
     num = num + str[*index_p] - '0';
