@@ -59,6 +59,22 @@ int** create_matrix(int* arr)
 }
 
 /*
+Will return the amount of digits in MATRIX_SIZE squared.
+*/
+int get_matrix_max_member_length()
+{
+  int max = MATRIX_SIZE * MATRIX_SIZE;
+  int digits = 0;
+  
+  while (max != 0)
+  {
+    max = max / 10;
+    digits++;
+  }
+  return digits;
+}
+
+/*
 This function goes over each row in the matrix- and prints its items,
 so that the entire matrix is printed.
 */
@@ -66,11 +82,12 @@ void print_matrix(int** matrix)
 {
   int i;
   int j;
+  int len = get_matrix_max_member_length();
   
   for (i = 0; i < MATRIX_SIZE; i++)
   {
     for (j = 0; j < MATRIX_SIZE; j++)
-      printf("%d ", matrix[i][j]);
+      printf("%*d ", len, matrix[i][j]);
     printf("\n");
   }
 }

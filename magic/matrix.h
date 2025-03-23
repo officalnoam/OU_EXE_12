@@ -20,7 +20,13 @@
     int** matrix: The created matrix.
   */
   int** create_matrix(int* arr);
+  /*
+  This function will return the maximum length (amount of digits) that a number in the matrix can be.
   
+  Output-
+    int: The maximum length
+  */
+  int get_matrix_max_member_length();  
   /*
   This function prints a passed matrix.
   
