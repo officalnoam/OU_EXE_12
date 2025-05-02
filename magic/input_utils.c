@@ -29,7 +29,7 @@ char* get_string_from_user() {
     if (size == capacity - 1)
     {
       capacity = capacity + BUFFER_SIZE * sizeof(char);
-      temp = (char*)realloc(temp, capacity);
+      temp = (char*) realloc(str, capacity);
       if (temp == NULL)
       {
         printf("Memory allocation failed");
@@ -37,8 +37,6 @@ char* get_string_from_user() {
       }
       if (temp != str)
       {
-        strncpy(temp, str, size);
-        free(str);
         str = temp;
       }
     }
